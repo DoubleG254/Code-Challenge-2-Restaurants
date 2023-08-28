@@ -2,7 +2,7 @@ class Review:
     all_reviews = []
     def __init__(self,customer,restaurant,rating):
         self._customer = customer
-        self.restaurant = restaurant
+        self._restaurant = restaurant
         self._rating = rating
         view = {'Customer':{customer},'Restaurant':{restaurant},'Rating':{rating}}
         Review.all_reviews.append(view)
@@ -14,3 +14,5 @@ class Review:
         return cls.all_reviews
     def customer(self):
         return self._customer
+    def restaurant(self):
+        return self._restaurant
