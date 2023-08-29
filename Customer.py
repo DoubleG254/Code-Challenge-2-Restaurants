@@ -35,4 +35,30 @@ class Customer(Review):
     def add_review(self,restaurant,rating):
         new_review = {'Customer':{self.full_name()},'Restaurant':{restaurant},'Rating':{rating}}
         super().all_reviews.append(new_review)
+    def num_reviews(self):
+        reviews_list = super().all_reviews
+        reviews = []
+        for review in reviews_list:
+            if review['Customer'] == self.full_name():
+                reviews.append(review)
+        return len(reviews)
+    @classmethod
+    def find_by_name(cls,name):
+        for customer in cls.customers:
+            if customer.full_name() == name:
+                print(name)
+                return name
+        print("None")
+        return None
+    @classmethod
+    def find_all_by_given_name(cls,name):
+        names = []
+        for customer in cls.customers:
+            if customer.given_name == name:
+                names.append(name)
+        return names
         
+            
+Dennis = Customer("Dennis","Kiprotich")
+Customer.find_by_name("Allan Kiprotich")
+    
